@@ -1,3 +1,4 @@
+{% load static %}
 <a href="/">
   <h1>StudyTogether</h1>
 </a>
@@ -5,3 +6,11 @@
 <form action="/" method="GET">
   <input type="text" name="q" placeholder="Search room....">
 </form>
+
+{% if request.user.is_authenticated %}
+<h1>Hello, {{request.user}}</h1>
+<img class="user-avatar" src="{% static 'images/user-avatar.avif' %}" alt="">
+<a href="/logout">logout</a>
+{% else %}
+<a href="/login">Login</a>
+{% endif %}
